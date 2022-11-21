@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1920px, height=1080px, initial-scale=1.0">
+  <title>World Adventure</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'main.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'colors.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'bootstrap.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'dice.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <div id="header">
+    <center>
+      <h1 id="header_font">World Adventure</h1>
+    </center>
+  </div>
+
+  <div class="container-fluid" id="main-flame">
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-2" id="start">
+              <div class="img_area"><img src="{{ url_for('static', filename='img/start.jpg')}}"></div>
+                <div class="ava_area">
+                  <div class="container-fluid" id="grid-0">
+                    <div class="row">
+                        <div class="col-md-3" id="grid-0-1"></div>
+                        <div class="col-md-3" id="grid-0-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3" id="grid-0-3"></div>
+                        <div class="col-md-3" id="grid-0-4"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="col-md-1" id="unit-1">
+              <div class="word_area">1</div>
+                <div class="container-fluid" id="grid-1">
+                    <div class="row" >
+                        <div class="col-md-3" id="grid-1-1"></div>
+                        <div class="col-md-3" id="grid-1-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3" id="grid-1-3"></div>
+                        <div class="col-md-3" id="grid-1-4"></div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">2</div>
+                <div class="container-fluid" id="grid-2">
+                    <div class="row" >
+                        <div class="col-md-3" id="grid-2-1"></div>
+                        <div class="col-md-3" id="grid-2-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3" id="grid-2-3"></div>
+                        <div class="col-md-3" id="grid-2-4"></div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+              <div class="word_area">3</div>
+              <div class="ava_area" id="grid-3">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-3-1"></div>
+                    <div class="col-md-3" id="grid-3-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-3-3"></div>
+                    <div class="col-md-3" id="grid-3-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2" id="unit-4">
+
+              <div class="img_area"><img src="{{ url_for('static', filename='img/pyramid.png')}}"></div>
+              <div class="word_area">4</div>
+                <div class="ava_area" id="grid-4">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-4-1"></div>
+                    <div class="col-md-3" id="grid-4-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-4-3"></div>
+                    <div class="col-md-3" id="grid-4-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+                <div class="word_area">5</div>
+                <div class="ava_area" id="grid-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-5-1"></div>
+                    <div class="col-md-3" id="grid-5-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-5-3"></div>
+                    <div class="col-md-3" id="grid-5-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">6 <i class="fa fa-motorcycle fa-lg"></i></div>
+                <div class="ava_area" id="grid-6">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-6-1"></div>
+                    <div class="col-md-3" id="grid-6-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-6-3"></div>
+                    <div class="col-md-3" id="grid-6-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">7 <i class="fa fa-shopping-cart fa-lg"></i></div>
+                <div class="ava_area" id="grid-7">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-7-1"></div>
+                    <div class="col-md-3" id="grid-7-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-7-3"></div>
+                    <div class="col-md-3" id="grid-7-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">8</div>
+                <div class="ava_area" id="grid-8">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-8-1"></div>
+                    <div class="col-md-3" id="grid-8-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-8-3"></div>
+                    <div class="col-md-3" id="grid-8-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1" style="height: 120px;">
+                <div class="word_area">9</div>
+                <div class="ava_area" id="grid-9">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-9-1"></div>
+                    <div class="col-md-3" id="grid-9-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-9-3"></div>
+                    <div class="col-md-3" id="grid-9-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 offset-md-11" id="unit-2">
+            <div class="word_area">10</div>
+                <div class="ava_area" id="grid-10">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-10-1"></div>
+                    <div class="col-md-3" id="grid-10-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-10-3"></div>
+                    <div class="col-md-3" id="grid-10-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 offset-md-1" id="unit-4" style="height: 120px;">
+                <div class="word_area">20</div>
+                <div class="ava_area" id="grid-20">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-20-1"></div>
+                    <div class="col-md-3" id="grid-20-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-20-3"></div>
+                    <div class="col-md-3" id="grid-20-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">19 <i class="fa fa-paw fa-lg"></i></div>
+                <div class="ava_area" id="grid-19">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-19-1"></div>
+                    <div class="col-md-3" id="grid-19-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-19-3"></div>
+                    <div class="col-md-3" id="grid-19-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">18</div>
+                <div class="ava_area" id="grid-18">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-18-1"></div>
+                    <div class="col-md-3" id="grid-18-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-18-3"></div>
+                    <div class="col-md-3" id="grid-18-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+                <div class="word_area">17 <i class="fa fa-bicycle fa-lg"></i></div>
+                <div class="ava_area" id="grid-17">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-17-1"></div>
+                    <div class="col-md-3" id="grid-17-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-17-3"></div>
+                    <div class="col-md-3" id="grid-17-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">16</div>
+                <div class="ava_area" id="grid-16">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-16-1"></div>
+                    <div class="col-md-3" id="grid-16-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-16-3"></div>
+                    <div class="col-md-3" id="grid-16-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">15 <i class="fa fa-motorcycle fa-lg"></i></div>
+                <div class="ava_area" id="grid-15">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-15-1"></div>
+                    <div class="col-md-3" id="grid-15-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-15-3"></div>
+                    <div class="col-md-3" id="grid-15-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">14 <i class="fa fa-plane fa-lg"></i></div>
+                <div class="ava_area" id="grid-14">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-14-1"></div>
+                    <div class="col-md-3" id="grid-14-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-14-3"></div>
+                    <div class="col-md-3" id="grid-14-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2" id="unit-1">
+              <div class="img_area"><img src="{{ url_for('static', filename='img/Taj_mahal.jpg')}}"></div>
+              <div class="word_area">13</div>
+                <div class="ava_area" id="grid-13">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-13-1"></div>
+                    <div class="col-md-3" id="grid-13-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-13-3"></div>
+                    <div class="col-md-3" id="grid-13-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">12</div>
+                <div class="ava_area" id="grid-12">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-12-1"></div>
+                    <div class="col-md-3" id="grid-12-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-12-3"></div>
+                    <div class="col-md-3" id="grid-12-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">11 <i class="fa fa-shopping-cart fa-lg"></i></div>
+                <div class="ava_area" id="grid-11">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-11-1"></div>
+                    <div class="col-md-3" id="grid-11-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-11-3"></div>
+                    <div class="col-md-3" id="grid-11-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2" id="unit-1">
+              <div class="img_area"><img src="{{ url_for('static', filename='img/Colosseum.jpg')}}"></div>
+              <div class="word_area">21</div>
+                <div class="ava_area" id="grid-21">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-21-1"></div>
+                    <div class="col-md-3" id="grid-21-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-21-3"></div>
+                    <div class="col-md-3" id="grid-21-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1  offset-md-1" id="unit-2">
+                <div class="word_area">22</div>
+                <div class="ava_area" id="grid-22">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-22-1"></div>
+                    <div class="col-md-3" id="grid-22-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-22-3"></div>
+                    <div class="col-md-3" id="grid-22-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">23 <i class="fa fa-paw fa-lg"></i></div>
+                <div class="ava_area" id="grid-23">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-23-1"></div>
+                    <div class="col-md-3" id="grid-23-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-23-3"></div>
+                    <div class="col-md-3" id="grid-23-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">24 <i class="fa fa-truck fa-lg"></i></div>
+                <div class="ava_area" id="grid-24">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-24-1"></div>
+                    <div class="col-md-3" id="grid-24-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-24-3"></div>
+                    <div class="col-md-3" id="grid-24-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2" id="unit-1">
+              <div class="img_area">
+                <img src="{{ url_for('static', filename='img/Eiffel_Tower.jpg')}}">
+              </div>
+              <div class="word_area">25</div>
+                <div class="ava_area" id="grid-25">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-25-1"></div>
+                    <div class="col-md-3" id="grid-25-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-25-3"></div>
+                    <div class="col-md-3" id="grid-25-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">26 <i class="fa fa-bicycle fa-lg"></i></div>
+                <div class="ava_area" id="grid-26">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-26-1"></div>
+                    <div class="col-md-3" id="grid-26-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-26-3"></div>
+                    <div class="col-md-3" id="grid-26-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">27</div>
+                <div class="ava_area" id="grid-27">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-27-1"></div>
+                    <div class="col-md-3" id="grid-27-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-27-3"></div>
+                    <div class="col-md-3" id="grid-27-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">28</div>
+                <div class="ava_area" id="grid-28">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-28-1"></div>
+                    <div class="col-md-3" id="grid-28-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-28-3"></div>
+                    <div class="col-md-3" id="grid-28-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+                <div class="word_area">29</div>
+                <div class="ava_area" id="grid-29">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-29-1"></div>
+                    <div class="col-md-3" id="grid-29-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-29-3"></div>
+                    <div class="col-md-3" id="grid-29-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">30 <i class="fa fa-train fa-lg"></i></div>
+                <div class="ava_area" id="grid-30">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-30-1"></div>
+                    <div class="col-md-3" id="grid-30-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-30-3"></div>
+                    <div class="col-md-3" id="grid-30-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3" style="height: 120px;">
+                <div class="word_area">31</div>
+                <div class="ava_area" id="grid-31">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-31-1"></div>
+                    <div class="col-md-3" id="grid-31-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-31-3"></div>
+                    <div class="col-md-3" id="grid-31-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 offset-md-11" id="unit-4">
+                <div class="word_area">32</div>
+                <div class="ava_area" id="grid-32">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-32-1"></div>
+                    <div class="col-md-3" id="grid-32-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-32-3"></div>
+                    <div class="col-md-3" id="grid-32-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1" id="unit-2" style="height: 120px;">
+                <div class="word_area">42 <i class="fa fa-truck fa-lg"></i></div>
+                <div class="ava_area" id="grid-42">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-42-1"></div>
+                    <div class="col-md-3" id="grid-42-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-42-3"></div>
+                    <div class="col-md-3" id="grid-42-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2" id="unit-1">
+              <div class="img_area">
+                <img src="{{ url_for('static', filename='img/Great_wall.png')}}">
+              </div>
+              <div class="word_area">
+                41
+              </div>
+                <div class="ava_area" id="grid-41">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-41-1"></div>
+                    <div class="col-md-3" id="grid-41-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-41-3"></div>
+                    <div class="col-md-3" id="grid-41-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">40</div>
+                <div class="ava_area" id="grid-40">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-40-1"></div>
+                    <div class="col-md-3" id="grid-40-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-40-3"></div>
+                    <div class="col-md-3" id="grid-40-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">39 <i class="fa fa-car fa-lg"></i></div>
+                <div class="ava_area" id="grid-39">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-39-1"></div>
+                    <div class="col-md-3" id="grid-39-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-39-3"></div>
+                    <div class="col-md-3" id="grid-39-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">38 <i class="fa fa-plane fa-lg"></i></div>
+                <div class="ava_area" id="grid-38">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-38-1"></div>
+                    <div class="col-md-3" id="grid-38-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-38-3"></div>
+                    <div class="col-md-3" id="grid-38-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+                <div class="word_area">37</div>
+                <div class="ava_area" id="grid-37">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-37-1"></div>
+                    <div class="col-md-3" id="grid-37-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-37-3"></div>
+                    <div class="col-md-3" id="grid-37-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">36</div>
+                <div class="ava_area" id="grid-36">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-36-1"></div>
+                    <div class="col-md-3" id="grid-36-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-36-3"></div>
+                    <div class="col-md-3" id="grid-36-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">35</div>
+                <div class="ava_area" id="grid-35">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-35-1"></div>
+                    <div class="col-md-3" id="grid-35-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-35-3"></div>
+                    <div class="col-md-3" id="grid-35-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">34 <i class="fa fa-rocket fa-lg"></i></div>
+                <div class="ava_area" id="grid-34">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-34-1"></div>
+                    <div class="col-md-3" id="grid-34-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-34-3"></div>
+                    <div class="col-md-3" id="grid-34-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2" id="unit-1">
+              <div class="img_area">
+                <img src="{{ url_for('static', filename='img/Fujisan.jpg')}}">
+              </div>
+              <div class="word_area">
+                33
+              </div>
+                <div class="ava_area" id="grid-33">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-33-1"></div>
+                    <div class="col-md-3" id="grid-33-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-33-3"></div>
+                    <div class="col-md-3" id="grid-33-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">43</div>
+                <div class="ava_area" id="grid-43">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-43-1"></div>
+                    <div class="col-md-3" id="grid-43-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-43-3"></div>
+                    <div class="col-md-3" id="grid-43-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1" id="unit-4">
+            <div class="word_area">44</div>
+                <div class="ava_area" id="grid-44">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-44-1"></div>
+                    <div class="col-md-3" id="grid-44-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-44-3"></div>
+                    <div class="col-md-3" id="grid-44-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+                <div class="word_area">45 <i class="fa fa-bus fa-lg"></i></div>
+                <div class="ava_area" id="grid-45">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-45-1"></div>
+                    <div class="col-md-3" id="grid-45-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-45-3"></div>
+                    <div class="col-md-3" id="grid-45-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">46</div>
+                <div class="ava_area" id="grid-46">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-46-1"></div>
+                    <div class="col-md-3" id="grid-46-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-46-3"></div>
+                    <div class="col-md-3" id="grid-46-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">47</div>
+                <div class="ava_area" id="grid-47">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-47-1"></div>
+                    <div class="col-md-3" id="grid-47-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-47-3"></div>
+                    <div class="col-md-3" id="grid-47-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2" id="unit-4">
+              <div class="img_area">
+                <img src="{{ url_for('static', filename='img/Leaning_Tower_of_Pisa.jpg')}}">
+              </div>
+              <div class="word_area">
+                48
+              </div>
+                <div class="ava_area" id="grid-48">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-48-1"></div>
+                    <div class="col-md-3" id="grid-48-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-48-3"></div>
+                    <div class="col-md-3" id="grid-48-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+                <div class="word_area">49 <i class="fa fa-car fa-lg"></i></div>
+                <div class="ava_area" id="grid-49">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-49-1"></div>
+                    <div class="col-md-3" id="grid-49-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-49-3"></div>
+                    <div class="col-md-3" id="grid-49-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">50 <i class="fa fa-train fa-lg"></i></div>
+                <div class="ava_area" id="grid-50">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-50-1"></div>
+                    <div class="col-md-3" id="grid-50-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-50-3"></div>
+                    <div class="col-md-3" id="grid-50-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">51</div>
+                <div class="ava_area" id="grid-51">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-51-1"></div>
+                    <div class="col-md-3" id="grid-51-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-51-3"></div>
+                    <div class="col-md-3" id="grid-51-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">52</div>
+                <div class="ava_area" id="grid-52">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-52-1"></div>
+                    <div class="col-md-3" id="grid-52-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-52-3"></div>
+                    <div class="col-md-3" id="grid-52-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+                <div class="word_area">53</div>
+                <div class="ava_area" id="grid-53">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-53-1"></div>
+                    <div class="col-md-3" id="grid-53-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-53-3"></div>
+                    <div class="col-md-3" id="grid-53-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2" style="height: 120px;">
+                <div class="word_area">54</div>
+                <div class="ava_area" id="grid-54">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-54-1"></div>
+                    <div class="col-md-3" id="grid-54-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-54-3"></div>
+                    <div class="col-md-3" id="grid-54-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 offset-md-11" id="unit-3">
+                <div class="word_area">55</div>
+                <div class="ava_area" id="grid-55">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-55-1"></div>
+                    <div class="col-md-3" id="grid-55-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-55-3"></div>
+                    <div class="col-md-3" id="grid-55-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2" id="end">
+              <div class="img_area"><img src="{{ url_for('static', filename='img/finish.jpg')}}"></div>
+                <div class="ava_area" id="grid-65">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-65-1"></div>
+                    <div class="col-md-3" id="grid-65-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-65-3"></div>
+                    <div class="col-md-3" id="grid-65-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">64</div>
+                <div class="ava_area" id="grid-64">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-64-1"></div>
+                    <div class="col-md-3" id="grid-64-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-64-3"></div>
+                    <div class="col-md-3" id="grid-64-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+            <div class="word_area">63 <i class="fa fa-bus fa-lg"></i></div>
+                <div class="ava_area" id="grid-63">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-63-1"></div>
+                    <div class="col-md-3" id="grid-63-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-63-3"></div>
+                    <div class="col-md-3" id="grid-63-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">62</div>
+                <div class="ava_area" id="grid-62">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-62-1"></div>
+                    <div class="col-md-3" id="grid-62-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-62-3"></div>
+                    <div class="col-md-3" id="grid-62-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+                <div class="word_area">61</div>
+                <div class="ava_area" id="grid-61">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-61-1"></div>
+                    <div class="col-md-3" id="grid-61-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-61-3"></div>
+                    <div class="col-md-3" id="grid-61-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2" id="unit-4">
+              <div class="img_area">
+                <img src="{{ url_for('static', filename='img/statue_of_liberty.jpg')}}">
+              </div>
+              <div class="word_area">
+                60
+              </div>
+                <div class="ava_area" id="grid-9">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-60-1"></div>
+                    <div class="col-md-3" id="grid-60-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-60-3"></div>
+                    <div class="col-md-3" id="grid-60-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-3">
+                <div class="word_area">59 <i class="fa fa-rocket fa-lg"></i></div>
+                <div class="ava_area" id="grid-59">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-59-1"></div>
+                    <div class="col-md-3" id="grid-59-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-59-3"></div>
+                    <div class="col-md-3" id="grid-59-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-2">
+                <div class="word_area">58</div>
+                <div class="ava_area" id="grid-58">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-58-1"></div>
+                    <div class="col-md-3" id="grid-58-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-58-3"></div>
+                    <div class="col-md-3" id="grid-58-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1" id="unit-1">
+            <div class="word_area">57</div>
+                <div class="ava_area" id="grid-57">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-57-1"></div>
+                    <div class="col-md-3" id="grid-57-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-57-3"></div>
+                    <div class="col-md-3" id="grid-57-4"></div>
+                  </div>
+                </div>
+              </div></div>
+            <div class="col-md-1" id="unit-4">
+                <div class="word_area">56</div>
+                <div class="ava_area" id="grid-56">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-3" id="grid-56-1"></div>
+                    <div class="col-md-3" id="grid-56-2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3" id="grid-56-3"></div>
+                    <div class="col-md-3" id="grid-56-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="container-fluid" id="users">
+            <div class="row" id="ready_area" style="padding-top: 10%">
+                <div class="col-md-6"><h4><b>amount users ready</b></h4></div>
+                <div class="col-md-2" id="ready_amount"><h4><b>0</b></h4></div>
+                <div class="col-md-4"><button id="ready-button">READY</button></div>
+            </div>
+          <div class="row">
+            <div class="col-md-12" id="user">
+              <div class="container-fluid" id="user_inner">
+                  <div class="row" style="height: 100%">
+                    <div class="col-md-1" id="user1_term_logo_area">
+                    </div>
+                    <div class="col-md-3">
+                        <img src={{ url_for('static', filename='img/avatar1.png')}} class="pic_avatar">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-8" id = "location"><h3>location:</h3></div>
+                                <div class="col-md-4 location_val" id = "location_val_1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8" id = "status"><h3>status:</h3></div>
+                                <div class="col-md-4 status_val" id = "status_val_1"></div>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" id="user">
+              <div class="container-fluid" id="user_inner">
+                <div class="row" style="height: 100%">
+                  <div class="col-md-1" id="user2_term_logo_area">
+                  </div>
+                  <div class="col-md-3">
+                      <img src={{ url_for('static', filename='img/avatar2.png')}} class="pic_avatar">
+                  </div>
+                  <div class="col-md-6">
+                      <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-8" id = "location"><h3>location:</h3></div>
+                                <div class="col-md-4 location_val" id = "location_val_2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8" id = "status"><h3>status:</h3></div>
+                                <div class="col-md-4 status_val" id = "status_val_2"></div>
+                            </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" id="user">
+              <div class="container-fluid" id="user_inner">
+                <div class="row" style="height: 100%">
+                  <div class="col-md-1" id="user3_term_logo_area">
+                  </div>
+                  <div class="col-md-3">
+                      <img src={{ url_for('static', filename='img/avatar3.png')}} class="pic_avatar">
+                  </div>
+                  <div class="col-md-6">
+                      <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-8" id = "location"><h3>location:</h3></div>
+                                <div class="col-md-4 location_val" id = "location_val_3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8" id = "status"><h3>status:</h3></div>
+                                <div class="col-md-4 status_val" id = "status_val_3"></div>
+                            </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" id="user">
+              <div class="container-fluid" id="user_inner">
+                <div class="row" style="height: 100%">
+                  <div class="col-md-1" id="user4_term_logo_area"></div>
+                  <div class="col-md-3">
+                      <img src={{ url_for('static', filename='img/avatar4.png')}} class="pic_avatar">
+                  </div>
+                  <div class="col-md-6">
+                      <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-8" id = "location"><h3>location:</h3></div>
+                                <div class="col-md-4 location_val" id = "location_val_4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8" id = "status"><h3>status:</h3></div>
+                                <div class="col-md-4 status_val" id = "status_val_4"></div>
+                            </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 5%">
+            <div class="dice-container">
+              <div class="dice-wrapper">
+                <img src={{ url_for('static', filename='img/dice_1.png')}} id="die-1" class="die">
+{#                <img src="img/dice_2.png" id="die-2" class="die">#}
+              </div>
+              <button class="dice-button">ROLL</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src={{ url_for('static', filename='javascript.js')}}> </script>
+</body>
+
+</html>

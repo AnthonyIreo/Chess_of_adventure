@@ -1,0 +1,26 @@
+body {
+  background-image: url(img/adventure.jpg);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+#unit-1{
+  background-color: #00E3D8;
+/*   background: rgba(0, 0.5, 0.3, 0.3); */
+}
+
+#unit-2 {
+  background-color: #FFA1DF;
+}
+
+#unit-3 {
+  background-color: #FFBDC6;
+}
+
+#unit-4 {
+  background-color: #ADDF5A;
+}
+
+#start, #end {
+  background-color: #FEAC00;
+}

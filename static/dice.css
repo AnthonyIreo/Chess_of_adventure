@@ -1,0 +1,50 @@
+.dice-container {
+  width: 100%;
+  padding: 20px;
+/*   border: 2px solid red; */
+  background-color: #F1E5B7;
+  box-shadow: 0 15px 35px rgb(50,50,50,0.2);
+  border-radius: 25px;
+  text-align: center;
+}
+
+.dice-wrapper {
+  margin: auto;
+/*   border: 2px solid green; */
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dice-button {
+  background-color: #6563FF;
+  border: none;
+  outline: none;
+  color: #ffffff;
+/*   padding: 15px 0; */
+  width: 80px;
+  height: 40px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.die {
+  width: 50%;
+  height: 60%;
+}
+
+.shake {
+  animation: shake 0.5s infinite;
+}
+@keyframes shake{
+  0%{
+    transform: rotate(8deg);
+  }
+  50%{
+    transform: rotate(-8deg);
+  }
+  100%{
+    transform: rotate(8deg);
+  }
+}
